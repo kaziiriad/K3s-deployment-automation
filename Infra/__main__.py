@@ -67,7 +67,10 @@ public_route_table_association = ec2.RouteTableAssociation(
 )
 
 # Elastic IP for NAT Gateway
-eip = ec2.Eip('nat-eip', vpc=True)
+eip = ec2.Eip(
+    'nat-eip',
+    tags={'Name': 'k3s-deployment-eip'}
+)
 
 # NAT Gateway
 nat_gateway = ec2.NatGateway(
