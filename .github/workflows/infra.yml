@@ -22,9 +22,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m venv venv
-          source venv/bin/activate
-          pip install pulumi pulumi-aws
+          curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR="/usr/local/bin" sh
+          uv pip install pulumi pulumi-aws --system
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2

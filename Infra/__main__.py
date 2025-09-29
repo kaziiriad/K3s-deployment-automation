@@ -182,6 +182,7 @@ git_runner_instance = ec2.Instance('git-runner-instance',
     }
 )
 
+## outputs
 # Output the instance IP addresses
 pulumi.export('git_runner_public_ip', git_runner_instance.public_ip)
 pulumi.export('master_private_ip', master_instance.private_ip)
