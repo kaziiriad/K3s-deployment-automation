@@ -139,16 +139,6 @@ key_pair = aws.ec2.KeyPair("my-key-pair",
 
 
 # EC2 instances
-git_runner_instance = ec2.Instance('git-runner-instance',
-    instance_type=instance_type,
-    ami=ami,
-    subnet_id=public_subnet.id,
-    vpc_security_group_ids=[security_group.id],
-    key_name=key_pair.key_name,
-    tags={
-        'Name': 'Git Runner',
-    }
-)
 
 master_instance = ec2.Instance(
     'master-instance',
@@ -184,7 +174,16 @@ worker_instance_2 = ec2.Instance('worker-instance-2',
     }
 )
 
-
+git_runner_instance = ec2.Instance('git-runner-instance',
+    instance_type=instance_type,
+    ami=ami,
+    subnet_id=public_subnet.id,
+    vpc_security_group_ids=[security_group.id],
+    key_name=key_pair.key_name,
+    tags={
+        'Name': 'Git Runner',
+    }
+)
 
 ## outputs
 # Output the instance IP addresses
