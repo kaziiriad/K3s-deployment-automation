@@ -58,16 +58,15 @@ jobs:
             if [ ! -d "actions-runner" ]; then
               mkdir actions-runner && cd actions-runner
 
-              curl -o actions-runner-linux-x64-2.317.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.317.0/actions-runner-linux-x64-2.317.0.tar.gz
+              curl -o actions-runner-linux-x64-2.328.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.328.0/actions-runner-linux-x64-2.328.0.tar.gz
 
-              echo "9e883d210df8c6028aff475475a457d380353f9d01877d51cc01a17b2a91161d  actions-runner-linux-x64-2.317.0.tar.gz" | shasum -a 256 -c
+              echo "01066fad3a2893e63e6ca880ae3a1fad5bf9329d60e77ee15f2b97c148c3cd4e  actions-runner-linux-x64-2.328.0.tar.gz" | shasum -a 256 -c
 
-              tar xzf ./actions-runner-linux-x64-2.317.0.tar.gz
+              tar xzf ./actions-runner-linux-x64-2.328.0.tar.gz
 
-              ./config.sh --url https://github.com/Konami33/k3s-deployment --token ${{ secrets.GIT_RUNNER_TOKEN }} --name "Git-runner"
+              ./config.sh --url https://github.com/kaziiriad/K3s-deployment-automation --token ${{ secrets.GIT_RUNNER_TOKEN }}
 
-              sudo ./svc.sh install
-              sudo ./svc.sh start
+              sudo ./run.sh
             else
               echo "actions-runner directory already exists. Skipping installation."
             fi
